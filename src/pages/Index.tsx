@@ -1,21 +1,19 @@
-import Navigation from "@/components/Navigation";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import PortfolioSection from "@/components/PortfolioSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
+import POPHeader from "@/components/POPHeader";
+import Apresentacao from "@/components/Apresentacao";
+import PassoAPasso from "@/components/PassoAPasso";
+import DocumentosObrigatorios from "@/components/DocumentosObrigatorios";
+import POPFooter from "@/components/POPFooter";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <POPHeader />
       <main>
-        <HeroSection />
-        <AboutSection />
-        <PortfolioSection />
-        <ContactSection />
+        <Apresentacao />
+        <PassoAPasso />
+        <DocumentosObrigatorios />
       </main>
-      <Footer />
+      <POPFooter />
     </div>
   );
 };
