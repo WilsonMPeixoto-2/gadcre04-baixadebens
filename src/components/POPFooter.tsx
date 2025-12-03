@@ -1,44 +1,40 @@
-import { Building2, Mail, HelpCircle } from "lucide-react";
+import { Headphones } from "lucide-react";
 
 const POPFooter = () => {
   return (
-    <footer className="gradient-hero text-primary-foreground py-12">
+    <footer className="gradient-hero text-primary-foreground py-10">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           {/* Info Box */}
-          <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-8 mb-8">
+          <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-6 mb-8 border border-primary-foreground/10">
             <div className="flex items-start gap-4">
-              <HelpCircle className="w-6 h-6 shrink-0 mt-1" />
+              <div className="w-10 h-10 rounded-full bg-primary-foreground/15 flex items-center justify-center shrink-0">
+                <Headphones className="w-5 h-5" />
+              </div>
               <div>
-                <h3 className="font-display text-xl font-semibold mb-2">
-                  Precisa de Ajuda?
+                <h3 className="font-display text-lg font-semibold mb-1">
+                  Precisa de apoio?
                 </h3>
-                <p className="font-body text-sm opacity-90 leading-relaxed">
-                  Este é um documento de orientação produzido pela Gerência de Administração da 4ª CRE.
-                  Em caso de dúvidas sobre o procedimento, entre em contato com a GAD.
+                <p className="font-body text-sm opacity-85 leading-relaxed">
+                  Em caso de dúvidas, contate a GAD/4ª CRE.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Footer Content */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-primary-foreground/20">
-            <div className="flex items-center gap-3">
-              <Building2 className="w-8 h-8" />
-              <div>
-                <p className="font-display text-lg font-semibold">
-                  Coordenadoria Regional de Educação
-                </p>
-                <p className="font-body text-sm opacity-80">
-                  Gerência de Administração (GAD)
-                </p>
-              </div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-primary-foreground/20">
+            <div className="text-center md:text-left">
+              <p className="font-display text-base font-semibold">
+                4ª Coordenadoria Regional de Educação
+              </p>
+              <p className="font-body text-sm opacity-75">
+                Gerência de Administração (GAD)
+              </p>
             </div>
 
-            <p className="font-body text-sm opacity-70 text-center md:text-right">
-              © 2024 • Todos os direitos reservados
-              <br />
-              Prefeitura da Cidade do Rio de Janeiro
+            <p className="font-body text-xs opacity-60 text-center md:text-right">
+              © 2024 • Prefeitura da Cidade do Rio de Janeiro
             </p>
           </div>
         </div>
