@@ -38,12 +38,12 @@ const POPHeader = () => {
 
           {/* Title */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-            BAIXA DE BENS
+            <span className="inline-block animate-fade-in">BAIXA DE BENS</span>
             <br />
-            <span className="text-primary-foreground/90">PATRIMONIAIS</span>
+            <span className="inline-block animate-fade-in text-primary-foreground/90" style={{ animationDelay: '150ms' }}>PATRIMONIAIS</span>
           </h1>
 
-          <p className="font-body text-base md:text-lg opacity-90 max-w-2xl leading-relaxed">
+          <p className="font-body text-base md:text-lg opacity-90 max-w-2xl leading-relaxed animate-fade-in" style={{ animationDelay: '300ms' }}>
             Guia operacional para diretores(as) e gestores(as) escolares na instrução do processo de baixa de bens inservíveis/irrecuperáveis no SEI!RIO.
           </p>
         </div>

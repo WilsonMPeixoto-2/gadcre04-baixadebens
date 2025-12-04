@@ -30,7 +30,7 @@ const DocumentosObrigatorios = () => {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-background">
+    <section id="documentos" className="py-16 md:py-20 bg-background scroll-mt-4">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
