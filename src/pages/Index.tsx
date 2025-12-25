@@ -13,6 +13,21 @@ const Index = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
+  // Initialize theme from localStorage or default to dark
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const shouldBeDark = savedTheme === "dark" || (!savedTheme && prefersDark);
+    
+    setIsDarkMode(shouldBeDark);
+    
+    if (shouldBeDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -53,8 +68,16 @@ const Index = () => {
   };
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    // Theme toggle logic would go here
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    
+    if (newMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
   };
 
   return (
@@ -75,7 +98,7 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="lg:pl-16 pb-20">
-        <POPHeader />
+        <POPHeader isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
         <Apresentacao />
         <PassoAPasso />
         <DocumentosObrigatorios />
