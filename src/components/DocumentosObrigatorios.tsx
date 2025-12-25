@@ -1,4 +1,4 @@
-import { FileText, Camera, FileCheck, Monitor } from "lucide-react";
+import { FileText, Camera, FileCheck, Monitor, Info } from "lucide-react";
 
 const DocumentosObrigatorios = () => {
   const passosFinais = [
@@ -20,33 +20,37 @@ const DocumentosObrigatorios = () => {
       icon: Camera,
       titulo: "Fotos dos Bens",
       descricao: "Arquivo com as fotos dos bens (utilize o modelo de fotos disponibilizado pela GAD)",
+      tag: "Arquivo",
     },
     {
       icon: Monitor,
       titulo: "Laudo Técnico de Imprestabilidade",
       descricao: "Obrigatório para equipamentos de informática e eletrônicos",
       obrigatorio: true,
+      tag: "Obrigatório",
     },
   ];
 
   return (
-    <section id="documentos" className="py-16 md:py-20 bg-background scroll-mt-4">
+    <section id="documentos" className="py-16 md:py-20 scroll-mt-4">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="flex items-center gap-3 mb-10 opacity-0 animate-fade-up">
-            <FileCheck className="w-7 h-7 text-primary" />
-            <h2 className="font-display text-2xl md:text-3xl text-primary font-semibold">
+          <div className="flex items-center gap-3 mb-8 opacity-0 animate-fade-up">
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <FileCheck className="w-5 h-5 text-primary" />
+            </div>
+            <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
               2. Documentos Obrigatórios
             </h2>
           </div>
 
           {/* Final Steps */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             {passosFinais.map((passo, index) => (
               <div
                 key={passo.numero}
-                className="bg-card rounded-lg shadow-card border-l-4 border-primary p-6 opacity-0 animate-fade-up"
+                className="glass-card rounded-xl p-6 opacity-0 animate-fade-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="flex items-start gap-5">
@@ -54,16 +58,19 @@ const DocumentosObrigatorios = () => {
                     {passo.numero}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-display text-lg md:text-xl font-semibold text-foreground mb-2">
+                    <h3 className="font-display text-lg font-bold text-foreground mb-2">
                       {passo.titulo}
                     </h3>
-                    <p className="font-body text-foreground/75 leading-relaxed text-justify">
+                    <p className="font-body text-muted-foreground leading-relaxed text-justify">
                       {passo.descricao}
                     </p>
                     {passo.detalhe && (
-                      <p className="font-body text-primary text-sm mt-3 font-medium">
-                        💡 {passo.detalhe}
-                      </p>
+                      <div className="mt-4 info-box flex items-start gap-3">
+                        <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                        <p className="font-body text-sm text-muted-foreground">
+                          {passo.detalhe}
+                        </p>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -72,25 +79,25 @@ const DocumentosObrigatorios = () => {
           </div>
 
           {/* Documentos Anexos Cards */}
-          <div className="grid md:grid-cols-2 gap-5 mt-8">
+          <div className="grid md:grid-cols-2 gap-4 mt-6">
             {documentosAnexos.map((doc, index) => (
               <div
                 key={doc.titulo}
-                className="bg-card rounded-lg border border-border hover:border-primary/40 hover:shadow-soft transition-all p-5 opacity-0 animate-fade-up"
+                className="glass-card-hover rounded-xl p-5 opacity-0 animate-fade-up"
                 style={{ animationDelay: `${200 + index * 100}ms` }}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <doc.icon className="w-5 h-5 text-primary" />
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                    <doc.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-display text-base font-semibold text-foreground">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2 flex-wrap">
+                      <h4 className="font-display text-base font-bold text-foreground">
                         {doc.titulo}
                       </h4>
                       {doc.obrigatorio && (
-                        <span className="bg-destructive/10 text-destructive text-xs font-body font-semibold px-2 py-0.5 rounded">
-                          Obrigatório
+                        <span className="bg-destructive/20 text-destructive text-xs font-body font-bold px-2 py-0.5 rounded-full">
+                          {doc.tag}
                         </span>
                       )}
                     </div>

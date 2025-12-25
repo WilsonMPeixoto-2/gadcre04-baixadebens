@@ -7,10 +7,10 @@ import FloatingNav from "@/components/FloatingNav";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-16">
       <FloatingNav />
       <POPHeader />
-      <main>
+      <main className="lg:pl-16">
         <Apresentacao />
         <PassoAPasso />
         <DocumentosObrigatorios />
