@@ -1,51 +1,74 @@
-import { FileText, Calendar } from "lucide-react";
+import { FileText, Calendar, Building2, FileCheck, Users, Folder } from "lucide-react";
 
 const POPHeader = () => {
+  const quickCards = [
+    { icon: Building2, label: "GAD", sublabel: "Gerência de Administração" },
+    { icon: FileCheck, label: "POP", sublabel: "Procedimento Operacional" },
+    { icon: Users, label: "4ª CRE", sublabel: "Coord. Regional" },
+    { icon: Calendar, label: "Nov/2024", sublabel: "Elaboração" },
+  ];
+
   return (
-    <header className="gradient-hero text-primary-foreground py-12 md:py-20 relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
+    <header className="relative overflow-hidden pt-8 pb-16 md:pt-12 md:pb-24">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-navy-dark via-background to-background" />
+      
+      {/* Glow effect */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/10 rounded-full blur-[120px]" />
 
       <div className="container mx-auto px-6 relative">
         {/* Top bar */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10 pb-6 border-b border-primary-foreground/20">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12 pb-6 border-b border-border/50">
           <div className="mb-4 md:mb-0">
-            <p className="font-display text-xl md:text-2xl font-semibold tracking-wide">
+            <p className="font-display text-lg md:text-xl font-bold tracking-wide text-foreground">
               4ª COORDENADORIA REGIONAL DE EDUCAÇÃO
             </p>
-            <p className="font-body text-sm opacity-80 mt-1">
+            <p className="font-body text-sm text-muted-foreground mt-1">
               Gerência de Administração (GAD)
             </p>
           </div>
-          <div className="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-            <Calendar className="w-4 h-4" />
-            <span className="font-body text-sm">Elaboração: Nov/2024</span>
+          <div className="flex items-center gap-2 glass-card px-4 py-2 rounded-xl">
+            <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
+            <span className="font-body text-sm text-muted-foreground">Guia Atualizado</span>
           </div>
         </div>
 
         {/* Main content */}
-        <div className="max-w-4xl opacity-0 animate-fade-up">
+        <div className="max-w-4xl mx-auto text-center opacity-0 animate-fade-up">
           {/* Badge */}
-          <div className="inline-block bg-primary-foreground/15 backdrop-blur-sm px-4 py-1.5 rounded mb-6">
-            <span className="font-body text-xs font-semibold tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 glass-card px-5 py-2 rounded-full mb-8">
+            <FileText className="w-4 h-4 text-primary" />
+            <span className="font-body text-xs font-semibold tracking-widest uppercase text-muted-foreground">
               Procedimento Operacional Padrão
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-            <span className="inline-block animate-fade-in">BAIXA DE BENS</span>
+          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
+            <span className="gradient-text">BAIXA DE BENS</span>
             <br />
-            <span className="inline-block animate-fade-in text-primary-foreground/90" style={{ animationDelay: '150ms' }}>PATRIMONIAIS</span>
+            <span className="text-foreground">PATRIMONIAIS</span>
           </h1>
 
-          <p className="font-body text-base md:text-lg opacity-90 max-w-2xl leading-relaxed animate-fade-in" style={{ animationDelay: '300ms' }}>
-            Guia operacional para diretores(as) e gestores(as) escolares na instrução do processo de baixa de bens inservíveis/irrecuperáveis no SEI!RIO.
+          <p className="font-body text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12 animate-fade-in" style={{ animationDelay: '200ms' }}>
+            Guia operacional para diretores(as) e gestores(as) escolares na instrução do processo de baixa de bens inservíveis/irrecuperáveis no <span className="text-primary font-semibold">SEI!RIO</span>.
           </p>
+
+          {/* Quick Cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '400ms' }}>
+            {quickCards.map((card, index) => (
+              <div
+                key={card.label}
+                className="glass-card-hover p-4 rounded-xl text-center"
+              >
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                  <card.icon className="w-5 h-5 text-primary" />
+                </div>
+                <p className="font-display text-sm font-bold text-foreground">{card.label}</p>
+                <p className="font-body text-xs text-muted-foreground mt-0.5">{card.sublabel}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </header>
