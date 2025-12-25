@@ -1,4 +1,4 @@
-import { Users, Shield, BookOpen, CheckCircle2, Target, FileText } from "lucide-react";
+import { Users } from "lucide-react";
 
 const Apresentacao = () => {
   return (
@@ -8,10 +8,9 @@ const Apresentacao = () => {
           {/* Section Header */}
           <div className="flex items-center gap-4 mb-12 opacity-0 animate-fade-up">
             <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 shadow-glow">
-              <span className="font-display text-2xl font-black text-primary">01</span>
+              <span className="font-display text-2xl font-black text-primary">0</span>
             </div>
             <div>
-              <p className="font-body text-xs uppercase tracking-widest text-primary mb-1">Seção</p>
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
                 Apresentação
               </h2>
@@ -33,32 +32,39 @@ const Apresentacao = () => {
 
               <div className="space-y-6 font-body text-muted-foreground leading-relaxed text-justify text-base md:text-lg">
                 <p>
-                  A <span className="text-primary font-semibold">4ª Coordenadoria Regional de Educação</span>, 
-                  por intermédio da <span className="text-primary font-semibold">Gerência de Administração (GAD)</span>, 
-                  coloca à disposição das unidades escolares este <span className="text-foreground font-medium bg-primary/10 px-2 py-0.5 rounded">Procedimento Operacional 
-                  Padrão (POP)</span> para formalização do processo de Baixa de Bens Patrimoniais Inservíveis/Irrecuperáveis no SEI!RIO.
+                  A rotina de uma gestão escolar é intensa. Entre demandas pedagógicas, cuidado com 
+                  pessoas e urgências do dia a dia, sabemos que a organização administrativa exige tempo, 
+                  atenção e, muitas vezes, decisões rápidas. Por isso, a <span className="text-primary font-semibold">4ª Coordenadoria Regional de 
+                  Educação</span>, por meio da <span className="text-primary font-semibold">Gerência de Administração (GAD)</span>, reafirma aqui um compromisso 
+                  simples e objetivo: estar ao lado das equipes gestoras, com orientação clara, apoio contínuo 
+                  e diálogo.
                 </p>
 
                 <p>
-                  O objetivo deste material é <span className="text-foreground font-medium">padronizar os passos</span>, 
-                  reduzir dúvidas e conferir maior segurança jurídica, transparência e rastreabilidade aos processos 
-                  encaminhados à 4ª CRE, contribuindo para a boa gestão dos recursos públicos sob responsabilidade 
-                  de cada unidade escolar.
+                  A chegada do <span className="text-foreground font-semibold">SEI!RIO</span> representa uma mudança importante na forma como registramos, 
+                  acompanhamos e formalizamos os processos administrativos. Toda transição traz desafios 
+                  — e é exatamente nesse momento que a parceria entre CRE e escolas faz diferença. Este 
+                  material foi pensado para facilitar o caminho, reduzir inseguranças, evitar retrabalho e dar 
+                  mais previsibilidade às rotinas.
                 </p>
 
                 <p>
-                  Ao seguir as orientações aqui presentes, vocês estarão não apenas cumprindo as exigências da 
-                  <span className="text-foreground font-medium"> Controladoria Geral do Município (CGM-RJ)</span>, mas também 
-                  otimizando recursos e fortalecendo a governança de nossas unidades escolares.
+                  Este é o primeiro de uma série de documentos de orientação que a 4ª CRE está construindo 
+                  para apoiar as direções, tanto nos procedimentos de gestão escolar quanto no uso do novo 
+                  sistema processual SEI!RIO. A cada novo guia, nossa intenção é a mesma: transformar 
+                  regras e etapas em rotinas mais simples, seguras e executáveis, respeitando o contexto real 
+                  de cada unidade.
+                </p>
+
+                <p>
+                  Conte com a 4ª CRE/GAD. Seguimos à disposição para orientar, ouvir e aprimorar 
+                  continuamente esses materiais, em parceria com vocês.
                 </p>
               </div>
 
               {/* Signatures */}
               <div className="mt-12 pt-8 border-t border-border/30 grid md:grid-cols-2 gap-8">
                 <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent border border-border/30">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <span className="font-display text-xl font-bold text-primary">FL</span>
-                  </div>
                   <p className="font-display text-lg text-foreground font-bold">
                     Fátima das Graças Lima Barros
                   </p>
@@ -70,9 +76,6 @@ const Apresentacao = () => {
                   </p>
                 </div>
                 <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent border border-border/30">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <span className="font-display text-xl font-bold text-primary">BB</span>
-                  </div>
                   <p className="font-display text-lg text-foreground font-bold">
                     Bianca Barreto da Fonseca Coelho
                   </p>
@@ -85,46 +88,6 @@ const Apresentacao = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Feature Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
-            {[
-              {
-                icon: BookOpen,
-                title: "Clareza",
-                description: "Instruções passo a passo para facilitar o entendimento do processo",
-                color: "primary",
-              },
-              {
-                icon: Shield,
-                title: "Conformidade",
-                description: "Totalmente alinhado às normativas da CGM-RJ",
-                color: "success",
-              },
-              {
-                icon: Target,
-                title: "Suporte",
-                description: "Apoio da GAD/4ª CRE em todas as etapas do processo",
-                color: "warning",
-              },
-            ].map((feature, index) => (
-              <div
-                key={feature.title}
-                className="glass-card-hover rounded-2xl p-6 text-center opacity-0 animate-fade-up group"
-                style={{ animationDelay: `${300 + index * 100}ms` }}
-              >
-                <div className={`w-14 h-14 rounded-2xl bg-${feature.color}/10 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                  <feature.icon className={`w-7 h-7 text-${feature.color}`} />
-                </div>
-                <h4 className="font-display text-lg font-bold text-foreground mb-3">
-                  {feature.title}
-                </h4>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </div>

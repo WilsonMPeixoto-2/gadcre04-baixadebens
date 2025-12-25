@@ -6,6 +6,78 @@
 
 @layer base {
   :root {
+    /* Light theme */
+    --background: 220 20% 95%;
+    --foreground: 222 47% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 15%;
+
+    --primary: 199 89% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 90%;
+    --secondary-foreground: 222 47% 15%;
+
+    --muted: 220 15% 90%;
+    --muted-foreground: 215 20% 40%;
+
+    --accent: 199 89% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 85%;
+    --input: 220 15% 85%;
+    --ring: 199 89% 38%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens - Light */
+    --navy: 222 47% 20%;
+    --navy-light: 222 47% 30%;
+    --navy-dark: 222 47% 15%;
+    --cyan: 199 89% 38%;
+    --cyan-glow: 199 89% 45%;
+    --cyan-muted: 199 40% 80%;
+    --slate-dark: 215 25% 50%;
+    --slate-light: 215 20% 40%;
+    --warning: 38 92% 50%;
+    --warning-muted: 38 40% 90%;
+    --success: 142 76% 36%;
+    --success-muted: 142 40% 90%;
+
+    /* Gradients - Light */
+    --gradient-hero: linear-gradient(135deg, hsl(222, 47%, 20%) 0%, hsl(222, 47%, 30%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(220, 20%, 98%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(199, 89%, 38%) 0%, hsl(199, 89%, 28%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(199, 89%, 38%) 0%, hsl(199, 89%, 55%) 100%);
+
+    /* Shadows - Light */
+    --shadow-soft: 0 4px 20px hsla(222, 47%, 20%, 0.1);
+    --shadow-elevated: 0 10px 40px hsla(222, 47%, 20%, 0.15);
+    --shadow-card: 0 2px 12px hsla(222, 47%, 20%, 0.08);
+    --shadow-glow: 0 0 30px hsla(199, 89%, 48%, 0.2);
+
+    /* Typography */
+    --font-display: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 15%;
+    --sidebar-primary: 199 89% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 95%;
+    --sidebar-accent-foreground: 222 47% 15%;
+    --sidebar-border: 220 15% 85%;
+    --sidebar-ring: 199 89% 38%;
+  }
+
+  .dark {
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
@@ -34,9 +106,7 @@
     --input: 217 33% 20%;
     --ring: 199 89% 48%;
 
-    --radius: 0.75rem;
-
-    /* Custom design tokens */
+    /* Custom design tokens - Dark */
     --navy: 222 47% 11%;
     --navy-light: 222 47% 16%;
     --navy-dark: 222 47% 8%;
@@ -50,21 +120,17 @@
     --success: 142 76% 36%;
     --success-muted: 142 40% 20%;
 
-    /* Gradients */
+    /* Gradients - Dark */
     --gradient-hero: linear-gradient(135deg, hsl(222, 47%, 8%) 0%, hsl(222, 47%, 14%) 100%);
     --gradient-card: linear-gradient(180deg, hsl(222, 47%, 16%) 0%, hsl(222, 47%, 12%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(199, 89%, 48%) 0%, hsl(199, 89%, 38%) 100%);
     --gradient-text: linear-gradient(135deg, hsl(199, 89%, 48%) 0%, hsl(199, 89%, 70%) 100%);
 
-    /* Shadows */
+    /* Shadows - Dark */
     --shadow-soft: 0 4px 20px hsla(222, 47%, 5%, 0.4);
     --shadow-elevated: 0 10px 40px hsla(222, 47%, 5%, 0.6);
     --shadow-card: 0 2px 12px hsla(222, 47%, 5%, 0.3);
     --shadow-glow: 0 0 30px hsla(199, 89%, 48%, 0.3);
-
-    /* Typography */
-    --font-display: 'Inter', sans-serif;
-    --font-body: 'Inter', sans-serif;
 
     --sidebar-background: 222 47% 11%;
     --sidebar-foreground: 210 40% 98%;
@@ -88,6 +154,9 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+  }
+
+  .dark body {
     background-image: 
       linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
@@ -140,7 +209,7 @@
   }
 
   .glass-card {
-    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-card;
   }
 
   .glass-card-hover {
@@ -166,6 +235,16 @@
 
   .nav-link-active {
     @apply bg-primary/10 text-primary border border-primary/20;
+  }
+
+  /* Header action buttons */
+  .header-action-btn {
+    @apply flex items-center gap-2 px-4 py-2.5 rounded-lg font-body text-sm font-medium transition-all duration-200;
+    @apply border border-border/50 hover:border-primary/40 hover:bg-primary/10;
+  }
+
+  .header-action-btn-primary {
+    @apply header-action-btn bg-primary text-primary-foreground border-primary hover:bg-primary/90 hover:border-primary;
   }
 }
 

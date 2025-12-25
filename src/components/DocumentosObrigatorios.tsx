@@ -1,29 +1,6 @@
-import { FileText, Camera, FileCheck, Monitor, Info, Send, ArrowRight, AlertCircle, Download } from "lucide-react";
+import { FileText, Camera, FileCheck, Monitor, Info, Send, ArrowRight, AlertCircle, Download, Folder } from "lucide-react";
 
 const DocumentosObrigatorios = () => {
-  const passosFinais = [
-    {
-      numero: 4,
-      titulo: "Criar o Documento Principal (Ofício)",
-      descricao: "Inclua um documento do tipo Ofício (Classificação 03.08.01) e utilize o texto padrão de solicitação de baixa.",
-      detalhe: "Lembre-se de copiar a tabela de bens (disponível nos modelos) e colar no corpo do Ofício, listando todos os bens a serem baixados.",
-      icon: FileText,
-    },
-    {
-      numero: 5,
-      titulo: "Anexar Documentos Obrigatórios",
-      descricao: "Inclua como Documento Externo os seguintes itens obrigatórios para completar o processo:",
-      icon: FileCheck,
-    },
-    {
-      numero: 6,
-      titulo: "Enviar Processo à GAD",
-      descricao: "Após incluir todos os documentos, envie o processo para a unidade E/4ª CRE/GAD para análise e tramitação.",
-      detalhe: "Utilize o comando 'Enviar Processo' no SEI!RIO e selecione a unidade de destino.",
-      icon: Send,
-    },
-  ];
-
   const documentosAnexos = [
     {
       icon: Camera,
@@ -63,122 +40,109 @@ const DocumentosObrigatorios = () => {
     <section id="documentos" className="py-20 md:py-28 scroll-mt-20">
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
-          {/* Section Header */}
-          <div className="flex items-center gap-4 mb-12 opacity-0 animate-fade-up">
-            <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 shadow-glow">
-              <span className="font-display text-2xl font-black text-primary">03</span>
-            </div>
-            <div>
-              <p className="font-body text-xs uppercase tracking-widest text-primary mb-1">Seção</p>
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
-                Documentos Obrigatórios
-              </h2>
-            </div>
-          </div>
-
-          {/* Final Steps */}
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="hidden md:block absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/50 to-transparent" />
-            
-            <div className="space-y-6">
-              {passosFinais.map((passo, index) => (
-                <div
-                  key={passo.numero}
-                  className="glass-card rounded-2xl p-6 md:p-8 opacity-0 animate-fade-up relative md:ml-20"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {/* Step number badge - positioned on timeline */}
-                  <div className="hidden md:flex absolute -left-20 top-8 items-center justify-center">
-                    <div className="step-number">
-                      {passo.numero}
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-5">
-                    {/* Mobile step number */}
-                    <div className="md:hidden step-number shrink-0">
-                      {passo.numero}
-                    </div>
-                    
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                          <passo.icon className="w-5 h-5 text-primary" />
-                        </div>
-                        <h3 className="font-display text-lg md:text-xl font-bold text-foreground">
-                          {passo.titulo}
-                        </h3>
-                      </div>
-                      
-                      <p className="font-body text-muted-foreground leading-relaxed text-justify">
-                        {passo.descricao}
-                      </p>
-                      
-                      {passo.detalhe && (
-                        <div className="mt-4 info-box flex items-start gap-3 p-4 rounded-xl bg-primary/5 border border-primary/20">
-                          <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                          <p className="font-body text-sm text-muted-foreground">
-                            {passo.detalhe}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+          {/* Section Header with gradient banner */}
+          <div className="relative rounded-2xl overflow-hidden mb-12 opacity-0 animate-fade-up">
+            <div className="bg-gradient-hero p-8 md:p-12">
+              <div className="flex items-center gap-6">
+                <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/20 border border-primary/30 shadow-glow">
+                  <span className="font-display text-2xl font-black text-white">2</span>
                 </div>
-              ))}
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <FileCheck className="w-6 h-6 text-primary" />
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-white">
+                      Inclusão de Documentos
+                    </h2>
+                  </div>
+                  <p className="font-body text-white/70">
+                    Documentos obrigatórios e anexos necessários para o processo
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Documentos Anexos Cards */}
-          <div className="mt-12 mb-8">
-            <div className="flex items-center gap-3 mb-6 opacity-0 animate-fade-up delay-200">
-              <AlertCircle className="w-5 h-5 text-primary" />
-              <h4 className="font-display text-lg font-bold text-foreground">
-                Documentos Necessários
-              </h4>
+          {/* 2.1 Sobre esta etapa */}
+          <div className="glass-card rounded-2xl p-8 mb-8 opacity-0 animate-fade-up delay-100">
+            <div className="flex items-start gap-4 border-l-4 border-primary pl-6">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                <FileText className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-display text-xl font-bold text-foreground mb-4">
+                  2.1. Sobre esta etapa
+                </h3>
+                <p className="font-body text-muted-foreground leading-relaxed text-justify">
+                  Nesta etapa, você irá incluir os documentos obrigatórios que compõem o processo 
+                  de baixa de bens. Cada documento deve ser anexado corretamente para garantir a 
+                  conformidade do processo.
+                </p>
+              </div>
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-5">
-              {documentosAnexos.map((doc, index) => (
-                <div
-                  key={doc.titulo}
-                  className="glass-card-hover rounded-2xl p-6 opacity-0 animate-fade-up group"
-                  style={{ animationDelay: `${250 + index * 75}ms` }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <doc.icon className="w-7 h-7 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2 flex-wrap">
-                        <h4 className="font-display text-base font-bold text-foreground">
-                          {doc.titulo}
-                        </h4>
-                        <span className={`text-xs font-bold font-body px-2.5 py-1 rounded-full ${
-                          doc.obrigatorio 
-                            ? 'bg-destructive/10 text-destructive' 
-                            : 'bg-muted text-muted-foreground'
-                        }`}>
-                          {doc.obrigatorio ? 'Obrigatório' : 'Opcional'}
-                        </span>
+          </div>
+
+          {/* 2.2 Documentos Necessários */}
+          <div className="glass-card rounded-2xl p-8 mb-8 opacity-0 animate-fade-up delay-200">
+            <div className="border-l-4 border-primary pl-6">
+              <h3 className="font-display text-xl font-bold text-foreground mb-6">
+                2.2. Documentos Necessários
+              </h3>
+              
+              <div className="grid md:grid-cols-2 gap-5">
+                {documentosAnexos.map((doc, index) => (
+                  <div
+                    key={doc.titulo}
+                    className="glass-card-hover rounded-2xl p-5 group"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <doc.icon className="w-6 h-6 text-primary" />
                       </div>
-                      <p className="font-body text-sm text-muted-foreground leading-relaxed mb-2">
-                        {doc.descricao}
-                      </p>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-body font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">
-                          {doc.tipo}
-                        </span>
-                        <ArrowRight className="w-3 h-3 text-muted-foreground" />
-                        <span className="text-xs font-body text-muted-foreground">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2 flex-wrap">
+                          <h4 className="font-display text-base font-bold text-foreground">
+                            {doc.titulo}
+                          </h4>
+                          <span className={`text-xs font-bold font-body px-2.5 py-1 rounded-full ${
+                            doc.obrigatorio 
+                              ? 'bg-destructive/10 text-destructive' 
+                              : 'bg-muted text-muted-foreground'
+                          }`}>
+                            {doc.obrigatorio ? 'Obrigatório' : 'Opcional'}
+                          </span>
+                        </div>
+                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-2">
+                          {doc.descricao}
+                        </p>
+                        <p className="text-xs font-body text-muted-foreground">
                           {doc.detalhe}
-                        </span>
+                        </p>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 2.3 Enviar Processo */}
+          <div className="glass-card rounded-2xl p-8 mb-8 opacity-0 animate-fade-up delay-300">
+            <div className="border-l-4 border-primary pl-6">
+              <h3 className="font-display text-xl font-bold text-foreground mb-4">
+                2.3. Enviar Processo à GAD
+              </h3>
+              <p className="font-body text-muted-foreground leading-relaxed mb-4">
+                Após incluir todos os documentos, envie o processo para a unidade{" "}
+                <span className="text-foreground font-semibold">E/4ª CRE/GAD</span>{" "}
+                para análise e tramitação.
+              </p>
+              
+              <div className="info-box flex items-start gap-3 p-4 rounded-xl bg-primary/5 border border-primary/20">
+                <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <p className="font-body text-sm text-muted-foreground">
+                  Utilize o comando "Enviar Processo" no SEI!RIO e selecione a unidade de destino.
+                </p>
+              </div>
             </div>
           </div>
 
