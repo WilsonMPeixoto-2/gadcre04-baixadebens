@@ -2,7 +2,7 @@ import { Users, Shield, BookOpen, CheckCircle2 } from "lucide-react";
 
 const Apresentacao = () => {
   return (
-    <section id="apresentacao" className="py-16 md:py-20 scroll-mt-4">
+    <section id="apresentacao" className="py-16 md:py-20 scroll-mt-20">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
