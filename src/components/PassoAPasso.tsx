@@ -1,8 +1,7 @@
-import { AlertTriangle, Folder, ArrowRight, CheckCircle2, FileText, ClipboardList, Copy, Check } from "lucide-react";
-import page2Image from "@/assets/page-2.jpg";
-import page3Image from "@/assets/page-3.jpg";
+import { Folder, FileText, ClipboardList, Copy, Check, Info } from "lucide-react";
 import seiMenuImage from "@/assets/sei-menu.png";
 import seiPlusIcon from "@/assets/sei-plus-icon.png";
+import seiProcessoCriado from "@/assets/sei-processo-criado.png";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -98,13 +97,18 @@ const PassoAPasso = () => {
               
               <p className="font-body text-sm text-muted-foreground mb-4">Visualização do menu:</p>
               
-              {/* SEI Menu screenshot */}
-              <div className="glass-card rounded-xl overflow-hidden max-w-xs">
-                <img 
-                  src={seiMenuImage} 
-                  alt="Menu lateral do SEI!RIO mostrando a opção Iniciar Processo"
-                  className="w-full h-auto"
-                />
+              {/* SEI Menu screenshot - Professional presentation */}
+              <div className="bg-card border border-border rounded-xl p-4 shadow-card max-w-sm">
+                <div className="bg-background rounded-lg overflow-hidden border border-border/50">
+                  <img 
+                    src={seiMenuImage} 
+                    alt="Menu lateral do SEI!RIO mostrando a opção Iniciar Processo"
+                    className="w-full h-auto"
+                  />
+                </div>
+                <p className="text-xs text-muted-foreground text-center mt-3 italic">
+                  Menu lateral do SEI!RIO
+                </p>
               </div>
             </div>
           </div>
@@ -114,7 +118,7 @@ const PassoAPasso = () => {
             <div className="border-l-4 border-primary pl-6">
               <h3 className="font-display text-xl font-bold text-foreground mb-4 flex items-center gap-3">
                 1.3. Escolha o Tipo do Processo
-                <img src={seiPlusIcon} alt="Ícone de adicionar" className="w-5 h-5" />
+                <img src={seiPlusIcon} alt="Ícone de adicionar" className="w-8 h-8" />
               </h3>
               <p className="font-body text-muted-foreground leading-relaxed mb-6">
                 Na tela que se abre, no campo{" "}
@@ -159,11 +163,11 @@ const PassoAPasso = () => {
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b border-border">
-                        <th className="text-left font-display font-bold text-foreground py-3 pr-4">
+                      <tr className="border-b-2 border-primary/30">
+                        <th className="text-left font-display font-bold text-foreground py-3 pr-4 text-base">
                           Campo
                         </th>
-                        <th className="text-left font-display font-bold text-foreground py-3">
+                        <th className="text-left font-display font-bold text-foreground py-3 text-base">
                           Valor a ser Preenchido
                         </th>
                       </tr>
@@ -171,16 +175,16 @@ const PassoAPasso = () => {
                     <tbody>
                       {camposTabela.map((item, index) => (
                         <tr key={index} className="border-b border-border/50">
-                          <td className="font-body text-foreground py-4 pr-4 font-medium">
+                          <td className="font-body text-foreground py-4 pr-4 font-semibold">
                             {item.campo}
                           </td>
                           <td className="font-body py-4">
                             <div className="flex flex-col gap-1">
-                              <code className="bg-card border border-border/50 text-primary px-3 py-1.5 rounded text-sm font-mono">
+                              <span className="bg-primary/15 text-foreground font-medium px-3 py-2 rounded-lg text-sm border border-primary/20">
                                 {item.valor}
-                              </code>
+                              </span>
                               {item.nota && (
-                                <span className="text-xs text-muted-foreground italic">
+                                <span className="text-xs text-muted-foreground italic pl-1">
                                   {item.nota}
                                 </span>
                               )}
@@ -195,103 +199,52 @@ const PassoAPasso = () => {
             </div>
           </div>
 
-          {/* Attention Box */}
-          <div className="attention-box rounded-2xl mb-8 opacity-0 animate-fade-up delay-500">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-warning/20 flex items-center justify-center shrink-0">
-                <AlertTriangle className="w-6 h-6 text-warning" />
-              </div>
-              <div className="flex-1">
-                <h4 className="font-display text-base font-bold text-foreground mb-4">
-                  ⚠️ ATENÇÃO
-                </h4>
-                <ul className="font-body text-muted-foreground space-y-3 text-sm leading-relaxed">
-                  <li className="flex items-start gap-3 p-3 rounded-xl bg-background/50">
-                    <ArrowRight className="w-4 h-4 text-warning shrink-0 mt-0.5" />
-                    <span>
-                      No campo <span className="text-foreground font-semibold">Especificação</span>, substitua{' '}
-                      <code className="bg-warning/20 text-warning px-2 py-0.5 rounded font-mono">04.XX.XXX</code>{' '}
-                      pela designação numérica da sua unidade escolar.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3 p-3 rounded-xl bg-background/50">
-                    <ArrowRight className="w-4 h-4 text-warning shrink-0 mt-0.5" />
-                    <span>
-                      Substitua{' '}
-                      <code className="bg-warning/20 text-warning px-2 py-0.5 rounded font-mono">NOME DA ESCOLA</code>{' '}
-                      pelo nome completo da unidade.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3 p-3 rounded-xl bg-background/50">
-                    <ArrowRight className="w-4 h-4 text-warning shrink-0 mt-0.5" />
-                    <span>
-                      Certifique-se de que o campo <span className="text-foreground font-semibold">Classificação por Assuntos</span>{' '}
-                      está preenchido exatamente como:{' '}
-                      <code className="bg-primary/10 text-primary px-2 py-0.5 rounded font-mono">03.08.01 - Baixa de bem patrimonial</code>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* 1.5 Criar o Documento Principal (Ofício) */}
+          {/* 1.5 Confirmação da criação do Processo */}
           <div className="glass-card rounded-2xl p-8 mb-8 opacity-0 animate-fade-up">
             <div className="border-l-4 border-primary pl-6">
               <h3 className="font-display text-xl font-bold text-foreground mb-4">
-                1.5. Criar o Documento Principal (Ofício)
+                1.5. Confirmação da Criação do Processo
               </h3>
-              <p className="font-body text-muted-foreground leading-relaxed mb-4">
-                Inclua um documento do tipo{" "}
-                <span className="text-foreground font-semibold">Ofício</span>{" "}
-                (Classificação 00.03.03.01) e utilize o texto padrão de solicitação de baixa. 
-                Lembre-se de copiar a tabela de bens (disponível nos modelos) e colar no corpo do Ofício.
+              <p className="font-body text-muted-foreground leading-relaxed mb-6">
+                A criação do Processo será confirmada com a abertura da tela abaixo:
               </p>
-            </div>
-          </div>
+              
+              {/* Screenshot do processo criado */}
+              <div className="bg-card border border-border rounded-xl p-4 shadow-card mb-6">
+                <div className="bg-background rounded-lg overflow-hidden border border-border/50">
+                  <img 
+                    src={seiProcessoCriado} 
+                    alt="Tela de confirmação da criação do processo no SEI!RIO"
+                    className="w-full h-auto"
+                  />
+                </div>
+                <p className="text-xs text-muted-foreground text-center mt-3 italic">
+                  Tela de confirmação do processo criado
+                </p>
+              </div>
 
-          {/* 1.6 Anexar Documentos Obrigatórios */}
-          <div className="glass-card rounded-2xl p-8 mb-8 opacity-0 animate-fade-up">
-            <div className="border-l-4 border-primary pl-6">
-              <h3 className="font-display text-xl font-bold text-foreground mb-4">
-                1.6. Anexar Documentos Obrigatórios
-              </h3>
-              <p className="font-body text-muted-foreground leading-relaxed mb-4">
-                Inclua como <span className="text-foreground font-semibold">Documento Externo</span> os seguintes itens:
-              </p>
-              <ul className="space-y-3 font-body text-muted-foreground">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-success shrink-0 mt-0.5" />
-                  <span>
-                    Arquivo com as <span className="text-foreground font-medium">Fotos</span> dos bens (utilize o modelo de fotos).
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-success shrink-0 mt-0.5" />
-                  <span>
-                    <span className="text-foreground font-medium">Laudo Técnico de Imprestabilidade</span>{" "}
-                    (obrigatório para equipamentos de informática e eletrônicos).
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Figure reference */}
-          <div className="glass-card-hover rounded-xl overflow-hidden opacity-0 animate-fade-up group">
-            <div className="relative overflow-hidden">
-              <img 
-                src={page3Image} 
-                alt="Documentos obrigatórios e campos de atenção especial"
-                className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            <div className="p-4 border-t border-border/30">
-              <span className="text-xs font-bold text-primary font-body uppercase tracking-wider">Figura 2</span>
-              <p className="font-body text-sm text-muted-foreground mt-1">
-                Documentos obrigatórios e campos de atenção especial
-              </p>
+              {/* Nota informativa */}
+              <div className="bg-primary/10 border border-primary/20 rounded-xl p-5">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
+                    <Info className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-display text-sm font-bold text-foreground mb-2">
+                      Nota Importante
+                    </h4>
+                    <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                      No sistema SEI!RIO não há "capa" com o mesmo layout do sistema anterior. 
+                      A geração da pasta com o número (NUP) será exibida ao lado, conforme exemplo:
+                    </p>
+                    <div className="mt-3 inline-flex items-center gap-2 bg-background border border-border rounded-lg px-4 py-2">
+                      <span className="font-mono text-primary font-bold text-base">
+                        000704.000769/2025-67
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
