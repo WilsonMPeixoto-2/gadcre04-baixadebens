@@ -1,24 +1,41 @@
-import { AlertTriangle, Folder, Lightbulb, ArrowRight, CheckCircle2, Info, FileText, ClipboardList } from "lucide-react";
-import page1Image from "@/assets/page-1.jpg";
+import { AlertTriangle, Folder, ArrowRight, CheckCircle2, FileText, ClipboardList, Copy, Check } from "lucide-react";
 import page2Image from "@/assets/page-2.jpg";
 import page3Image from "@/assets/page-3.jpg";
+import seiMenuImage from "@/assets/sei-menu.png";
+import seiPlusIcon from "@/assets/sei-plus-icon.png";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const PassoAPasso = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("BAIXA DE BENS: BAIXA DE BENS MÓVEIS");
+    setCopied(true);
+    toast.success("Texto copiado!");
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const camposTabela = [
     { 
       campo: "Tipo de Processo", 
-      valor: "Baixa de Materiais",
-      status: "fixo"
+      valor: "Baixa de bens: baixa de bens móveis",
+      nota: "(preenchido automaticamente pelo sistema)"
     },
     { 
       campo: "Especificação", 
-      valor: "Baixa de Bens - 04.XX.XXX NOME DA ESCOLA",
-      status: "variavel"
+      valor: "Baixa de Bens - 04.XX.XXX + NOME DA UNIDADE ESCOLAR",
+      nota: null
     },
     { 
       campo: "Classificação por Assuntos", 
-      valor: "03.08.01 - Baixa de bem patrimonial",
-      status: "fixo"
+      valor: "03.08.01 - Baixa de bens móveis",
+      nota: "(preenchido automaticamente pelo sistema)"
+    },
+    { 
+      campo: "Interessados", 
+      valor: "E/4a.CRE/GAD - 10729 - Gerência de Administração",
+      nota: null
     },
   ];
 
@@ -75,78 +92,59 @@ const PassoAPasso = () => {
               </h3>
               <p className="font-body text-muted-foreground leading-relaxed mb-6">
                 Para abrir um novo processo no SEI!RIO, o usuário deve selecionar a opção{" "}
-                <span className="text-foreground font-semibold">"INICIAR PROCESSO"</span>, 
+                <span className="text-foreground font-semibold">"Iniciar Processo"</span>, 
                 conforme o menu de navegação do sistema.
               </p>
               
               <p className="font-body text-sm text-muted-foreground mb-4">Visualização do menu:</p>
               
-              {/* SEI Menu mockup */}
-              <div className="glass-card rounded-xl overflow-hidden max-w-md">
-                <div className="bg-[#003366] text-white text-xs font-body py-2 px-4">
-                  PREFEITURA DA CIDADE DO RIO DE JANEIRO
-                </div>
-                <div className="bg-white p-4 border-b border-gray-200">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="font-bold text-[#003366] text-lg">sei!</span>
-                      <span className="text-gray-600 text-sm">SEI - Prefeitura da Cidade do Rio de Janeiro</span>
-                    </div>
-                    <div className="w-6 h-6 rounded-full border border-gray-300" />
-                  </div>
-                </div>
-                <div className="bg-white p-3">
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <span>🔍</span>
-                    <span>Pesquisar no Menu</span>
-                  </div>
-                </div>
+              {/* SEI Menu screenshot */}
+              <div className="glass-card rounded-xl overflow-hidden max-w-xs">
+                <img 
+                  src={seiMenuImage} 
+                  alt="Menu lateral do SEI!RIO mostrando a opção Iniciar Processo"
+                  className="w-full h-auto"
+                />
               </div>
             </div>
           </div>
 
-          {/* 1.3 Pesquisar pelo Tipo de Processo */}
+          {/* 1.3 Escolha o Tipo do Processo */}
           <div className="glass-card rounded-2xl p-8 mb-8 opacity-0 animate-fade-up delay-300">
             <div className="border-l-4 border-primary pl-6">
-              <h3 className="font-display text-xl font-bold text-foreground mb-4">
-                1.3. Pesquisar pelo Tipo de Processo
+              <h3 className="font-display text-xl font-bold text-foreground mb-4 flex items-center gap-3">
+                1.3. Escolha o Tipo do Processo
+                <img src={seiPlusIcon} alt="Ícone de adicionar" className="w-5 h-5" />
               </h3>
               <p className="font-body text-muted-foreground leading-relaxed mb-6">
                 Na tela que se abre, no campo{" "}
-                <span className="text-foreground font-semibold">"Escolha o Tipo do Processo"</span>, digite{" "}
-                <code className="bg-primary/10 text-primary px-2 py-0.5 rounded font-mono text-sm">"bai"</code>{" "}
-                para filtrar a lista. Selecione a opção{" "}
-                <span className="text-foreground font-semibold">"Baixa de Materiais"</span>{" "}
-                que aparecerá.
+                <span className="text-foreground font-semibold">"Escolha o Tipo do Processo"</span>, digite (ou copie){" "}
+                <span className="inline-flex items-center gap-2">
+                  <code className="bg-primary/10 text-primary px-2 py-0.5 rounded font-mono text-sm">
+                    "BAIXA DE BENS: BAIXA DE BENS MÓVEIS"
+                  </code>
+                  <button 
+                    onClick={handleCopy}
+                    className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary text-xs font-medium transition-colors"
+                    title="Copiar texto"
+                  >
+                    {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                    {copied ? "Copiado!" : "Copiar"}
+                  </button>
+                </span>
               </p>
-              
-              {/* Search result mockup */}
-              <div className="glass-card rounded-xl p-4 max-w-md">
-                <p className="font-body text-xs text-muted-foreground mb-2">
-                  Campo de pesquisa mostrando o resultado "Baixa de Materiais"
-                </p>
-                <div className="bg-card border border-border rounded-lg p-3">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs text-muted-foreground">Tipo:</span>
-                    <span className="font-body text-sm text-foreground font-medium">Baixa de Materiais</span>
-                  </div>
-                  <div className="w-full h-1 bg-primary/20 rounded-full">
-                    <div className="w-full h-1 bg-primary rounded-full" />
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
-          {/* 1.4 Preencher os Campos Obrigatórios */}
+          {/* 1.4 INICIAR PROCESSO */}
           <div className="glass-card rounded-2xl p-8 mb-8 opacity-0 animate-fade-up delay-400">
             <div className="border-l-4 border-primary pl-6">
               <h3 className="font-display text-xl font-bold text-foreground mb-4">
-                1.4. Preencher os Campos Obrigatórios
+                1.4. INICIAR PROCESSO
               </h3>
               <p className="font-body text-muted-foreground leading-relaxed mb-6">
-                Após selecionar "Baixa de Materiais", o formulário completo será exibido. 
-                Preencha os campos conforme as orientações abaixo.
+                Após a seleção do tipo de processo, a tela "INICIAR PROCESSO" será exibida. 
+                Preencha os campos conforme as orientações abaixo:
               </p>
               
               {/* Tabela de Preenchimento */}
@@ -173,36 +171,25 @@ const PassoAPasso = () => {
                     <tbody>
                       {camposTabela.map((item, index) => (
                         <tr key={index} className="border-b border-border/50">
-                          <td className="font-body text-foreground py-4 pr-4">
+                          <td className="font-body text-foreground py-4 pr-4 font-medium">
                             {item.campo}
                           </td>
                           <td className="font-body py-4">
-                            <code className="bg-card border border-border/50 text-primary px-3 py-1.5 rounded text-sm font-mono">
-                              {item.valor}
-                            </code>
+                            <div className="flex flex-col gap-1">
+                              <code className="bg-card border border-border/50 text-primary px-3 py-1.5 rounded text-sm font-mono">
+                                {item.valor}
+                              </code>
+                              {item.nota && (
+                                <span className="text-xs text-muted-foreground italic">
+                                  {item.nota}
+                                </span>
+                              )}
+                            </div>
                           </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
-                </div>
-              </div>
-
-              {/* Figura do formulário */}
-              <div className="glass-card-hover rounded-xl overflow-hidden group">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={page2Image} 
-                    alt="Formulário completo para iniciar processo de baixa de bens no SEI!RIO"
-                    className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="p-4 border-t border-border/30">
-                  <span className="text-xs font-bold text-primary font-body uppercase tracking-wider">Figura 1</span>
-                  <p className="font-body text-sm text-muted-foreground mt-1">
-                    Formulário completo para iniciar processo de baixa de bens no SEI!RIO
-                  </p>
                 </div>
               </div>
             </div>
