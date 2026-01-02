@@ -1,7 +1,8 @@
 import { Folder, FileText, ClipboardList, Copy, Check, Info } from "lucide-react";
-import seiMenuImage from "@/assets/sei-menu.png";
+import seiMenuIniciar from "@/assets/sei-menu-iniciar.png";
 import seiPlusIcon from "@/assets/sei-plus-icon.png";
 import seiProcessoCriado from "@/assets/sei-processo-criado.png";
+import seiNivelAcesso from "@/assets/sei-nivel-acesso.png";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -91,24 +92,19 @@ const PassoAPasso = () => {
               </h3>
               <p className="font-body text-muted-foreground leading-relaxed mb-6">
                 Para abrir um novo processo no SEI!RIO, o usuário deve selecionar a opção{" "}
-                <span className="text-foreground font-semibold">"Iniciar Processo"</span>, 
+                <span className="text-foreground font-semibold">"INICIAR PROCESSO"</span>, 
                 conforme o menu de navegação do sistema.
               </p>
               
-              <p className="font-body text-sm text-muted-foreground mb-4">Visualização do menu:</p>
-              
               {/* SEI Menu screenshot - Professional presentation */}
-              <div className="bg-card border border-border rounded-xl p-4 shadow-card max-w-sm">
+              <div className="bg-card border border-border rounded-xl p-4 shadow-card">
                 <div className="bg-background rounded-lg overflow-hidden border border-border/50">
                   <img 
-                    src={seiMenuImage} 
-                    alt="Menu lateral do SEI!RIO mostrando a opção Iniciar Processo"
+                    src={seiMenuIniciar} 
+                    alt="Tela do SEI!RIO mostrando a opção Iniciar Processo"
                     className="w-full h-auto"
                   />
                 </div>
-                <p className="text-xs text-muted-foreground text-center mt-3 italic">
-                  Menu lateral do SEI!RIO
-                </p>
               </div>
             </div>
           </div>
@@ -199,11 +195,31 @@ const PassoAPasso = () => {
             </div>
           </div>
 
-          {/* 1.5 Confirmação da criação do Processo */}
+          {/* 1.5 Nível de Acesso */}
+          <div className="glass-card rounded-2xl p-8 mb-8 opacity-0 animate-fade-up">
+            <div className="border-l-4 border-primary pl-6">
+              <h3 className="font-display text-xl font-bold text-foreground mb-6">
+                1.5. Nível de Acesso
+              </h3>
+              
+              {/* Screenshot do nível de acesso */}
+              <div className="bg-card border border-border rounded-xl p-4 shadow-card">
+                <div className="bg-background rounded-lg overflow-hidden border border-border/50">
+                  <img 
+                    src={seiNivelAcesso} 
+                    alt="Tabela de níveis de acesso do SEI!RIO"
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 1.6 Confirmação da criação do Processo */}
           <div className="glass-card rounded-2xl p-8 mb-8 opacity-0 animate-fade-up">
             <div className="border-l-4 border-primary pl-6">
               <h3 className="font-display text-xl font-bold text-foreground mb-4">
-                1.5. Confirmação da Criação do Processo
+                1.6. Confirmação da Criação do Processo
               </h3>
               <p className="font-body text-muted-foreground leading-relaxed mb-6">
                 A criação do Processo será confirmada com a abertura da tela abaixo:
