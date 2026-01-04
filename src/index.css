@@ -173,19 +173,27 @@
 }
 
 @layer components {
-  .gradient-hero {
+  /*
+    Aliases para compatibilidade com classes usadas no código (ex.: "bg-gradient-hero").
+    Isso evita casos de "texto branco em fundo branco" quando o background não é aplicado.
+  */
+  .gradient-hero,
+  .bg-gradient-hero {
     background: var(--gradient-hero);
   }
 
-  .gradient-card {
+  .gradient-card,
+  .bg-gradient-card {
     background: var(--gradient-card);
   }
 
-  .gradient-accent {
+  .gradient-accent,
+  .bg-gradient-accent {
     background: var(--gradient-accent);
   }
 
-  .gradient-text {
+  .gradient-text,
+  .bg-gradient-text {
     background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

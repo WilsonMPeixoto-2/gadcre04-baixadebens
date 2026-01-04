@@ -14,8 +14,14 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Inter', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        display: ["Inter", "sans-serif"],
+        body: ["Inter", "sans-serif"],
+      },
+      backgroundImage: {
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-card": "var(--gradient-card)",
+        "gradient-accent": "var(--gradient-accent)",
+        "gradient-text": "var(--gradient-text)",
       },
       colors: {
         border: "hsl(var(--border))",
