@@ -16,14 +16,20 @@ const POPHeader = ({ isDarkMode, onToggleTheme }: POPHeaderProps) => {
 
   return (
     <header className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-hero" />
-      
+      {/* Background */}
+      <div
+        className={`absolute inset-0 ${
+          isDarkMode
+            ? "gradient-hero"
+            : "bg-gradient-to-b from-background to-secondary"
+        }`}
+      />
+
       {/* Glow effect */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/8 rounded-full blur-[150px]" />
 
       {/* Top bar with action buttons */}
-      <div className="relative z-10 border-b border-border/30 bg-card/50 backdrop-blur-xl">
+      <div className="relative z-10 border-b border-border bg-card dark:bg-card/50 dark:backdrop-blur-xl">
         <div className="container mx-auto px-6 py-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             {/* Left: Logo and title */}
@@ -79,11 +85,11 @@ const POPHeader = ({ isDarkMode, onToggleTheme }: POPHeaderProps) => {
             </div>
 
             {/* Title */}
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4 opacity-0 animate-fade-up text-white" style={{ animationDelay: '100ms' }}>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4 opacity-0 animate-fade-up text-foreground dark:text-white" style={{ animationDelay: '100ms' }}>
               Baixa de Bens Patrimoniais
             </h1>
 
-            <p className="font-body text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-12 opacity-0 animate-fade-up" style={{ animationDelay: '200ms' }}>
+            <p className="font-body text-lg md:text-xl text-muted-foreground dark:text-white/80 max-w-2xl mx-auto leading-relaxed mb-12 opacity-0 animate-fade-up" style={{ animationDelay: '200ms' }}>
               Acesso ao SEI!RIO, criação do processo, numeração e identificação
             </p>
           </div>
@@ -94,7 +100,7 @@ const POPHeader = ({ isDarkMode, onToggleTheme }: POPHeaderProps) => {
       <div className="relative z-10 pb-8">
         <button
           onClick={scrollToContent}
-          className="mx-auto flex flex-col items-center gap-2 text-white/60 hover:text-primary transition-colors group"
+          className="mx-auto flex flex-col items-center gap-2 text-muted-foreground dark:text-white/60 hover:text-primary transition-colors group"
         >
           <div className="flex items-center gap-2">
             <Mouse className="w-4 h-4" />

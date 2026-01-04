@@ -22,13 +22,13 @@ export const Sidebar = ({ activeSection, onNavigate }: SidebarProps) => {
 
   return (
     <aside 
-      className="hidden lg:flex fixed left-0 top-0 bottom-16 z-40 flex-col bg-card/50 backdrop-blur-xl border-r border-border/30 transition-all duration-300"
+      className="hidden lg:flex fixed left-0 top-0 bottom-16 z-40 flex-col bg-card border-r border-border dark:bg-card/50 dark:backdrop-blur-xl transition-all duration-300"
       style={{ width: isExpanded ? '240px' : '64px' }}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
     >
       {/* Logo area */}
-      <div className="p-4 border-b border-border/30">
+      <div className="p-4 border-b border-border">
         <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
           <FileText className="w-4 h-4 text-primary" />
         </div>
@@ -43,7 +43,7 @@ export const Sidebar = ({ activeSection, onNavigate }: SidebarProps) => {
             className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-200 ${
               activeSection === section.id
                 ? "bg-primary/10 text-primary"
-                : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
             }`}
           >
             <section.icon className="w-5 h-5 shrink-0" />
@@ -59,7 +59,7 @@ export const Sidebar = ({ activeSection, onNavigate }: SidebarProps) => {
       </nav>
 
       {/* Menu label */}
-      <div className="p-4 border-t border-border/30">
+      <div className="p-4 border-t border-border">
         <span className={`font-body text-xs text-muted-foreground uppercase tracking-wider transition-opacity duration-300 ${
           isExpanded ? "opacity-100" : "opacity-0"
         }`}>
@@ -78,9 +78,9 @@ interface BottomBarProps {
 
 export const BottomBar = ({ readingProgress, isDarkMode, onToggleTheme }: BottomBarProps) => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 glass-card border-t border-border/30">
+    <div className="fixed bottom-0 left-0 right-0 z-50 glass-card border-t border-border">
       {/* Progress bar */}
-      <div className="h-1 bg-border/30">
+      <div className="h-1 bg-border">
         <div 
           className="h-full bg-gradient-to-r from-primary to-cyan-glow transition-all duration-150 ease-out"
           style={{ width: `${readingProgress}%` }}
@@ -103,11 +103,11 @@ export const BottomBar = ({ readingProgress, isDarkMode, onToggleTheme }: Bottom
               {Math.round(readingProgress)}% lido
             </span>
             
-            <div className="h-4 w-px bg-border/50 hidden sm:block" />
+            <div className="h-4 w-px bg-border hidden sm:block" />
             
             <button 
               onClick={onToggleTheme}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
               title={isDarkMode ? "Modo claro" : "Modo escuro"}
             >
               {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -115,7 +115,7 @@ export const BottomBar = ({ readingProgress, isDarkMode, onToggleTheme }: Bottom
             
             <button 
               onClick={() => window.print()}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
             >
               <Printer className="w-4 h-4" />
               <span className="font-body text-xs hidden sm:inline">Imprimir</span>
@@ -154,7 +154,7 @@ export const MobileNav = ({ isOpen, onToggle, activeSection, onNavigate }: Mobil
 
       {/* Mobile menu panel */}
       <div 
-        className={`lg:hidden fixed inset-0 z-40 bg-background/95 backdrop-blur-xl transition-all duration-300 ${
+        className={`lg:hidden fixed inset-0 z-40 bg-background dark:bg-background/95 dark:backdrop-blur-xl transition-all duration-300 ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -167,7 +167,7 @@ export const MobileNav = ({ isOpen, onToggle, activeSection, onNavigate }: Mobil
                 className={`w-full flex items-center gap-4 px-4 py-4 rounded-xl transition-all duration-200 ${
                   activeSection === section.id
                     ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                 }`}
               >
                 <section.icon className="w-5 h-5" />
