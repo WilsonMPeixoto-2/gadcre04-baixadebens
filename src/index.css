@@ -209,11 +209,12 @@
   }
 
   .glass-card {
-    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-card;
+    @apply bg-card border border-border shadow-card;
+    @apply dark:bg-card/80 dark:backdrop-blur-xl dark:border-border/50;
   }
 
   .glass-card-hover {
-    @apply glass-card hover:border-primary/40 hover:shadow-glow transition-all duration-300;
+    @apply glass-card hover:border-primary/50 hover:shadow-glow transition-all duration-300;
   }
 
   .step-number {
@@ -240,7 +241,7 @@
   /* Header action buttons */
   .header-action-btn {
     @apply flex items-center gap-2 px-4 py-2.5 rounded-lg font-body text-sm font-medium transition-all duration-200;
-    @apply border border-border/50 hover:border-primary/40 hover:bg-primary/10;
+    @apply border border-border hover:border-primary/50 hover:bg-secondary;
   }
 
   .header-action-btn-primary {
