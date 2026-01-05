@@ -1,5 +1,4 @@
-import { FileText, ChevronDown, Mouse, Sun, Moon, Printer, Download, Monitor } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { FileText, ChevronDown, Sun, Moon, Printer, Download } from "lucide-react";
 
 interface POPHeaderProps {
   isDarkMode: boolean;
@@ -15,99 +14,102 @@ const POPHeader = ({ isDarkMode, onToggleTheme }: POPHeaderProps) => {
   };
 
   return (
-    <header className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* Background */}
-      <div
-        className={`absolute inset-0 ${
-          isDarkMode
-            ? "gradient-hero"
-            : "bg-gradient-to-b from-background to-secondary"
-        }`}
-      />
-
-      {/* Glow effect */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/8 rounded-full blur-[150px]" />
-
-      {/* Top bar with action buttons */}
-      <div className="relative z-10 border-b border-border bg-card dark:bg-card/50 dark:backdrop-blur-xl">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <header className="relative bg-card border-b border-border">
+      {/* Action Buttons - Top Bar */}
+      <div className="bg-muted/50 border-b border-border">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between gap-4 py-3">
             {/* Left: Logo and title */}
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-                <FileText className="w-6 h-6 text-primary" />
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+                <FileText className="w-5 h-5 text-primary" />
               </div>
-              <div>
-                <p className="font-display text-base font-bold text-foreground">
-                  Procedimento Operacional Padrão
+              <div className="hidden sm:block">
+                <p className="font-display text-sm font-bold text-foreground">
+                  POP – Baixa de Bens
                 </p>
-                <p className="font-body text-sm text-muted-foreground">
-                  4ª Coordenadoria Regional de Educação | GAD
+                <p className="font-body text-xs text-muted-foreground">
+                  4ª CRE | GAD
                 </p>
               </div>
             </div>
-            
+
             {/* Right: Action buttons */}
             <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={onToggleTheme}
-                className="header-action-btn"
-                title={isDarkMode ? "Modo claro" : "Modo escuro"}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-card border border-border text-foreground hover:bg-muted transition-colors text-sm font-medium"
+                aria-label="Alternar tema"
               >
-                {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-                <span className="hidden sm:inline">{isDarkMode ? "Claro" : "Escuro"}</span>
+                {isDarkMode ? (
+                  <>
+                    <Sun className="w-4 h-4" />
+                    <span className="hidden sm:inline">Modo Claro</span>
+                  </>
+                ) : (
+                  <>
+                    <Moon className="w-4 h-4" />
+                    <span className="hidden sm:inline">Modo Escuro</span>
+                  </>
+                )}
               </button>
               
               <button
                 onClick={() => window.print()}
-                className="header-action-btn"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-colors text-sm font-medium"
               >
                 <Printer className="w-4 h-4" />
                 <span className="hidden sm:inline">Imprimir</span>
               </button>
-              
-              <button className="header-action-btn-primary">
-                <Download className="w-4 h-4" />
-                <span className="hidden sm:inline">Download</span>
-              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main content */}
-      <div className="flex-1 flex items-center justify-center relative z-10">
-        <div className="container mx-auto px-6 py-12">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-br from-[#1e3a5f] to-[#2d5a87] dark:from-[#0f1729] dark:to-[#1a2744]">
+        <div className="container mx-auto px-6 py-12 md:py-16">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Section number badge */}
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 mb-8 opacity-0 animate-fade-up shadow-glow">
-              <FileText className="w-10 h-10 text-primary" />
+            {/* Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm font-medium">
+                <FileText className="w-4 h-4" />
+                Procedimento Operacional Padrão
+              </span>
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 text-sm font-medium">
+                GAD / 4ª CRE
+              </span>
             </div>
-
+            
             {/* Title */}
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4 opacity-0 animate-fade-up text-foreground dark:text-white" style={{ animationDelay: '100ms' }}>
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
               Baixa de Bens Patrimoniais
             </h1>
-
-            <p className="font-body text-lg md:text-xl text-muted-foreground dark:text-white/80 max-w-2xl mx-auto leading-relaxed mb-12 opacity-0 animate-fade-up" style={{ animationDelay: '200ms' }}>
-              Acesso ao SEI!RIO, criação do processo, numeração e identificação
+            
+            {/* Subtitle */}
+            <p className="font-body text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8">
+              Guia completo para registro e tramitação de processos de baixa de bens no SEI!RIO
             </p>
+
+            {/* Meta info */}
+            <div className="flex flex-wrap items-center justify-center gap-4 text-white/60 text-sm">
+              <span>Secretaria Municipal de Educação</span>
+              <span className="w-1 h-1 rounded-full bg-white/40"></span>
+              <span>4ª Coordenadoria Regional de Educação</span>
+              <span className="w-1 h-1 rounded-full bg-white/40"></span>
+              <span>Janeiro 2025</span>
+            </div>
+
+            {/* Scroll indicator */}
+            <button
+              onClick={scrollToContent}
+              className="mt-10 flex flex-col items-center gap-2 mx-auto text-white/50 hover:text-white/80 transition-colors"
+            >
+              <span className="text-sm">Role para continuar</span>
+              <ChevronDown className="w-6 h-6 animate-bounce" />
+            </button>
           </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="relative z-10 pb-8">
-        <button
-          onClick={scrollToContent}
-          className="mx-auto flex flex-col items-center gap-2 text-muted-foreground dark:text-white/60 hover:text-primary transition-colors group"
-        >
-          <div className="flex items-center gap-2">
-            <Mouse className="w-4 h-4" />
-            <span className="font-body text-sm">Role para continuar</span>
-          </div>
-          <ChevronDown className="w-5 h-5 animate-bounce" />
-        </button>
       </div>
     </header>
   );
