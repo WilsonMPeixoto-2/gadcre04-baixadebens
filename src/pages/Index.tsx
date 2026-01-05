@@ -1,23 +1,27 @@
 import { useState, useEffect } from "react";
 import POPHeader from "@/components/POPHeader";
 import Apresentacao from "@/components/Apresentacao";
+import BaseLegal from "@/components/BaseLegal";
 import PassoAPasso from "@/components/PassoAPasso";
-import DocumentosObrigatorios from "@/components/DocumentosObrigatorios";
+import OficioSolicitacao from "@/components/OficioSolicitacao";
+import LaudoFotografico from "@/components/LaudoFotografico";
+import DocumentosExternos from "@/components/DocumentosExternos";
+import DocumentoBaixa from "@/components/DocumentoBaixa";
 import Checklist from "@/components/Checklist";
 import Contatos from "@/components/Contatos";
+import ObservacoesFinais from "@/components/ObservacoesFinais";
 import { Sidebar, BottomBar, MobileNav } from "@/components/Navigation";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("");
   const [readingProgress, setReadingProgress] = useState(0);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
-  // Initialize theme from localStorage or default to dark
+  // Initialize theme from localStorage or default to light
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const shouldBeDark = savedTheme === "dark" || (!savedTheme && prefersDark);
+    const shouldBeDark = savedTheme === "dark";
     
     setIsDarkMode(shouldBeDark);
     
@@ -100,9 +104,14 @@ const Index = () => {
       <main className="lg:pl-16 pb-20">
         <POPHeader isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
         <Apresentacao />
+        <BaseLegal />
         <PassoAPasso />
-        <DocumentosObrigatorios />
+        <OficioSolicitacao />
+        <LaudoFotografico />
+        <DocumentosExternos />
+        <DocumentoBaixa />
         <Checklist />
+        <ObservacoesFinais />
         <Contatos />
       </main>
 
